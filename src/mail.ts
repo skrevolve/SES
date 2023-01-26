@@ -23,10 +23,14 @@ export class Mail {
                 html: this.html
             },
             (err, res) => {
+
                 if (err) {
+
                     console.error(err)
+                    transporter.close()
                     return false
                 }
+
                 console.log(`send email: ${JSON.stringify(res.envelope)}`)
                 console.log(res.messageId)
                 transporter.close()

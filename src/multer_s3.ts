@@ -30,7 +30,7 @@ export class MulterS3 {
                         cb(null, `${fileDir}/${fileName}.${mimeType[1]}`)
                     },
                 }),
-                limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
+                limits: { fileSize: 5 * 1024 * 1024 }, // 5 MB
             }).single(imgName)
 
             return true
