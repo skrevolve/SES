@@ -1,5 +1,4 @@
-# SES
-AWS SES send mail
+# aws-sdk-services
 
 -   npm install typescript -g // 타입 스크립트를 글로벌로 설치, tsc --init에 사용
 
@@ -13,9 +12,9 @@ AWS SES send mail
             "compilerOptions": {
             "target": "es5",
             "module": "commonjs",
-            "outDir": "out", // js 파일이 생성되는 위치
-            "sourceMap": true, // 디버깅
-            "esModuleInterop": true // caver-js 모듈을 가져오려면 설정해야함
+            "outDir": "out",
+            "sourceMap": true,
+            "esModuleInterop": true
             }
         }
 
