@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "target": "es2016",
+        "module": "commonjs",
+        "outDir": "out",
+        "sourceMap": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+    },
+    "include": [
+      "main.ts",
+      "src/**/*",
+      "src/**/*.json",
+    ]
+  }

@@ -1,0 +1,30 @@
+{
+  "name": "ses",
+  "version": "1.0.0",
+  "description": "AWS SES send mail",
+  "main": "index.js",
+  "scripts": {
+    "start": "pm2 start ./out/main.js --name aws-sdk-ses-iam-examples",
+    "reload": "pm2 reload ./out/main.js --name aws-sdk-ses-iam-examples",
+    "build": "tsc -p .",
+    "stop": "pm2 stop ./out/main.js --name aws-sdk-ses-iam-examples"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skrevolve/SES.git"
+  },
+  "author": "skrevolve",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skrevolve/SES/issues"
+  },
+  "homepage": "https://github.com/skrevolve/SES#readme",
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@types/nodemailer": "^6.4.7",
+    "aws-sdk": "^2.1301.0"
+  }
+}
