@@ -21,7 +21,7 @@
 -   npm install -D @types/node
 -   npm install -D typescript
 
--   진입 파일에서 f5 키를 눌러 디버그 환경 설정
+-   Set the debug environment by pressing f5
 
     >
 
@@ -39,7 +39,7 @@
             ]
         }
 
--   디버그를 실행하기 전에 preLaunchTask 에 해당하는 tsc 빌드를 먼저 해야 하므로, f1 키를 눌러 Tasks.configureDefaultBuildTask 클릭후 tsc build
+- Before running debug, you need to build tsc corresponding to preLaunchTask first, so press F1, click Tasks.configureDefaultBuildTask, and then tsc build
     >
         {
             "version": "2.0.0",
