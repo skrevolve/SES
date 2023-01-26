@@ -38,7 +38,7 @@ export class MailTemplate {
     }
 
     // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SES.html#sendTemplatedEmail-property
-    public async sendTemplateEmail(toAddress: string) {
+    public async sendTemplateEmail(toAddress: string): Promise<boolean> {
 
         const params = {
             Destination: {
@@ -74,9 +74,15 @@ export class MailTemplate {
         }
 
         this.ses.sendTemplatedEmail(params, (err, data) => {
-            if (err) console.error(err, err.stack)
-            else console.log(data)
+            if (err) {
+                console.error(err, err.stack)
+                return false
+            } else {
+                console.log(data)
+            }
         })
+
+        return true
     }
 
     public async sendBulkTemplateEmail(toaddressList: string[]): Promise<boolean> {
@@ -118,6 +124,7 @@ export class MailTemplate {
             } catch(e) {
 
                 console.error(e)
+                return false
             }
 
             if (toaddressList.length === 0) break;
