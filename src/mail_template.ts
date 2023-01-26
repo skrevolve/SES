@@ -42,12 +42,12 @@ export class MailTemplate {
 
         const params = {
             Destination: {
-                BccAddresses: [
-                    // 숨은 참조 주소
-                ],
-                CcAddresses: [
-                    // 참조 주소
-                ],
+                // BccAddresses: [
+                //  /* more items */
+                // ],
+                // CcAddresses: [
+                //  /* more items */
+                // ],
                 ToAddresses: [
                     toAddress,
                 ],
