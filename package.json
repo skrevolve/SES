@@ -4,7 +4,7 @@
   "description": "AWS SES send mail",
   "main": "index.js",
   "scripts": {
-    "start": "node ./out/main.js",
+    "start": "tsc -p . && node ./out/examdples.js",
     "build": "tsc -p ."
   },
   "repository": {

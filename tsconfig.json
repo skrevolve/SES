@@ -8,7 +8,7 @@
         "esModuleInterop": true,
     },
     "include": [
-      "main.ts",
+      "eample.ts",
       "src/**/*",
       "src/**/*.json",
     ]

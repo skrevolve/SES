@@ -52,25 +52,24 @@ export class MailTemplate {
                     toAddress,
                 ],
             },
-            Source: 'noreply@test.co.kr', // 보내는 이메일
-            Template: 'hello_template', // SES에 정의된 메일 템플릿
-            TemplateData: '{}', // html안에 템플릿을 사용한다면 채움
+            Source: 'noreply@test.co.kr',
+            Template: 'hello_template',
+            TemplateData: '{}',
             // ReplyToAddresses: [
             //     /* more items */
-            //     /* 회신받을 주소, 현재는 noreply 로 받기 때문에 비워둠 */
             // ],
-            // ConfigurationSetName: "STRING_VALUE" /* aws ses에 정의 구성 세트 */,
-            // Tags: [ /* 메세지에 적용할 name/value 형식의 태그 */
+            // ConfigurationSetName: "STRING_VALUE",
+            // Tags: [
             //     {
-            //         Name: "STRING_VALUE" /* required */,
-            //         Value: "STRING_VALUE" /* required */,
+            //         Name: "STRING_VALUE",
+            //         Value: "STRING_VALUE",
             //     },
             //     /* more items */
             // ],
-            // ReturnPath: "STRING_VALUE" /* 피드백 전달이 활성화되면 반송 및 불만 사항이 전달되는 이메일 주소 */,
-            // ReturnPathArn: "STRING_VALUE" /* 이 매개변수는 인증 전송에만 사용  */,
-            // SourceArn: "STRING_VALUE", /* 이 매개변수는 인증 전송에만 사용 */
-            // TemplateArn: "STRING_VALUE", /* 이메일을 보낼 때 사용할 템플릿의 ARN */
+            // ReturnPath: "STRING_VALUE",
+            // ReturnPathArn: "STRING_VALUE",
+            // SourceArn: "STRING_VALUE",
+            // TemplateArn: "STRING_VALUE",
         }
 
         this.ses.sendTemplatedEmail(params, (err, data) => {
