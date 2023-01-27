@@ -1,21 +1,23 @@
-import { MulterS3 } from '../src/multer_s3'
-import { S3Client } from '@aws-sdk/client-s3'
+import express from 'express'
+import { s3Upload, s3Delete } from '../src/multer_s3'
 
-const image = new MulterS3(
-    new S3Client({
-        region: 'YOUR_S3_REGION',
-        credentials: {
-            accessKeyId: 'YOUR_S3_ACCESS_KEY',
-            secretAccessKey: 'YOUR_S3_SECRET_KEY'
-        }
-    }),
-    'YOUR_S3_BUCKET'
-)
+const app = express()
 
-// upload single image
-const uploadResult = await image.uploadSingle('fileDir', 'imgName')
-if (!uploadResult) console.error('upload image error')
+app.post('/img/upload', s3Upload.single('img_field_name'), async (req, res, next) => {
 
-// delete image
-const deleteResult = await image.delete('fileDir', 'fileName')
-if (!deleteResult) console.error('delete image error')
+  res.status(200).send(`Successfully upload`)
+})
+
+app.post('/img/upload', s3Upload.array('img_field_name', 3), async (req, res, next) => {
+
+  res.status(200).send(`Successfully upload ${req.files?.length} files`)
+})
+
+app.post('/img/delete', async (req, res, next) => {
+
+  const { fileDir, fileName } = req.body
+
+  await s3Delete(fileDir, fileName)
+
+  res.status(200).send('Successfully delete')
+})
