@@ -1,4 +1,12 @@
 # aws-sdk-services-nodejs
+- run examples
+
+>
+    npm run mail_template
+>
+    npm run mail
+>
+    npm run multer_s3
 
 -   npm install typescript -g
 

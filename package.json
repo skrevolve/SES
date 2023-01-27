@@ -4,7 +4,9 @@
   "description": "AWS SES send mail",
   "main": "index.js",
   "scripts": {
-    "start": "tsc -p . && node ./out/examdples.js",
+    "mail_template": "tsc -p . && node ./examples/mail_template.js",
+    "mail": "tsc -p . && node ./examples/mail.js",
+    "multer_s3": "tsc -p . && node ./examples/multer_s3.js",
     "build": "tsc -p ."
   },
   "repository": {

@@ -7,34 +7,38 @@ export class Mail {
 
     constructor(private readonly ses: AWS.SES) {}
 
-    public async send(toAddress: string): Promise<boolean> {
+    public send(toAddress: string) {
 
-        const transporter = nodemailer.createTransport({
-            SES: this.ses
-        })
+        try {
 
-        transporter.sendMail(
-            {
-                from: 'noreply@test.co.kr',
-                to: toAddress,
-                subject: this.subject,
-                html: this.html
-            },
-            (err, res) => {
+            const transporter = nodemailer.createTransport({
+                SES: this.ses
+            })
 
-                if (err) {
+            transporter.sendMail(
+                {
+                    from: 'noreply@test.co.kr',
+                    to: toAddress,
+                    subject: this.subject,
+                    html: this.html
+                },
+                (err, res) => {
 
-                    console.error(err)
+                    if (err) {
+
+                        console.error(err)
+                        transporter.close()
+                    }
+
+                    console.log(`send email: ${JSON.stringify(res.envelope)}`)
+                    console.log(res.messageId)
                     transporter.close()
-                    return false
                 }
+            )
 
-                console.log(`send email: ${JSON.stringify(res.envelope)}`)
-                console.log(res.messageId)
-                transporter.close()
-            }
-        )
+        } catch(e) {
 
-        return true
+            throw new Error(`send err :: ${e}`)
+        }
     }
 }

@@ -82,53 +82,50 @@ export class MailTemplate {
         return true
     }
 
-    public async sendBulkTemplateEmail(toaddressList: string[]): Promise<boolean> {
+    public sendBulkTemplateEmail(toaddressList: string[]) {
 
-        const maxLimit: number = 50;
-        let spliceIdx: number = 0;
+        try {
 
-        while (true) {
+            const maxLimit: number = 50;
+            let spliceIdx: number = 0;
 
-            let limit = maxLimit;
-            if (toaddressList.length  < maxLimit) limit = toaddressList.length;
-            else return false;
+            while (true) {
 
-            const spliceTolist = toaddressList.splice(0, limit);
-            spliceIdx += limit;
+                let limit = maxLimit;
+                if (toaddressList.length  < maxLimit) limit = toaddressList.length;
+                else return false;
 
-            const params = {
-                Destinations: [
-                    {
-                        Destination: {
-                            CcAddresses: [
-                                // Email Addresses
-                            ],
-                            ToAddresses: spliceTolist,
-                        },
-                        // ReplacementTemplateData: '{ "REPLACEMENT_TAG_NAME": "REPLACEMENT_VALUE" }',
-                    }
-                ],
-                Source: 'noreply@test.co.kr',
-                Template: 'hello_template',
-                DefaultTemplateData: '{}',
-                // ReplyToAddresses: ["email addresses"]
+                const spliceTolist = toaddressList.splice(0, limit);
+                spliceIdx += limit;
+
+                const params = {
+                    Destinations: [
+                        {
+                            Destination: {
+                                CcAddresses: [
+                                    // Email Addresses
+                                ],
+                                ToAddresses: spliceTolist,
+                            },
+                            // ReplacementTemplateData: '{ "REPLACEMENT_TAG_NAME": "REPLACEMENT_VALUE" }',
+                        }
+                    ],
+                    Source: 'noreply@test.co.kr',
+                    Template: 'hello_template',
+                    DefaultTemplateData: '{}',
+                    // ReplyToAddresses: ["email addresses"]
+                }
+
+                this.ses.sendBulkTemplatedEmail(params).promise()
+
+                if (toaddressList.length === 0) break;
+
+                new Promise((resolve) => setTimeout(resolve, 200))
             }
 
-            try {
+        } catch(e) {
 
-                await this.ses.sendBulkTemplatedEmail(params).promise()
-
-            } catch(e) {
-
-                console.error(e)
-                return false
-            }
-
-            if (toaddressList.length === 0) break;
-
-            await new Promise((resolve) => setTimeout(resolve, 200))
+            throw new Error(`send err :: ${e}`)
         }
-
-        return true
     }
 }

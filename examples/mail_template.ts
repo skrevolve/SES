@@ -11,5 +11,4 @@ const userEmailList = [
     'test2@gmail.com',
 ]
 
-const mailTemplateResult = await mailTemplate.sendBulkTemplateEmail(userEmailList);
-if (!mailTemplateResult) console.error('mail template send error')
+mailTemplate.sendBulkTemplateEmail(userEmailList)
