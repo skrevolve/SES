@@ -1,4 +1,4 @@
-# aws-sdk-services
+# aws-sdk-services-nodejs
 
 -   npm install typescript -g
 
