@@ -5,9 +5,7 @@ export class Mail {
     private readonly subject: string = 'hello my friend'
     private readonly html: string = '<p> hello !! </p>'
 
-    constructor(readonly ses: AWS.SES) {
-
-    }
+    constructor(private readonly ses: AWS.SES) {}
 
     public async send(toAddress: string): Promise<boolean> {
 

@@ -4,11 +4,9 @@ export class MailTemplate {
     private readonly html: string = '<p> hello !! </p>'
     private readonly text: string = 'hello !!'
 
-    constructor(readonly ses: AWS.SES) {
+    constructor(private readonly ses: AWS.SES) {}
 
-    }
-
-    public createTemplate() {
+    public async createTemplate() {
 
         const params: AWS.SES.CreateTemplateRequest = {
             Template: {
@@ -26,7 +24,7 @@ export class MailTemplate {
         })
     }
 
-    public deleteTemplate() {
+    public async deleteTemplate() {
 
         this.ses.deleteTemplate(
             {TemplateName: 'hello_template'},

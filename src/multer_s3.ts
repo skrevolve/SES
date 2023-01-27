@@ -4,9 +4,7 @@ import { S3Client, DeleteObjectCommand } from '@aws-sdk/client-s3'
 
 export class MulterS3 {
 
-    constructor(readonly s3: S3Client, readonly s3Bucket: string) {
-
-    }
+    constructor(private readonly s3: S3Client, readonly s3Bucket: string) {}
 
     public async uploadSingle(fileDir: string, imgName: string): Promise<Boolean> {
 
