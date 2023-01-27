@@ -32,7 +32,7 @@ export const s3Upload = multer({
     limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
 })
 
-export const s3Delete = async (fileDir:string , fileName:string) => {
+export const s3Delete = async (fileDir:string , fileName:string): Promise<boolean> => {
 
     const bucketParams = {
       Bucket: 'YOUR_S3_BUCKET',
@@ -42,10 +42,12 @@ export const s3Delete = async (fileDir:string , fileName:string) => {
     try {
 
         await s3.send(new DeleteObjectCommand(bucketParams))
+        return true
 
     } catch(e) {
 
         console.error(e)
+        return false
     }
 
 }
