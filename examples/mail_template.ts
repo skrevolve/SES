@@ -11,4 +11,6 @@ const userEmailList = [
     'test2@gmail.com',
 ]
 
-mailTemplate.sendBulkTemplateEmail(userEmailList)
+mailTemplate.createTemplate(); // if you dont have mail template
+mailTemplate.sendBulkTemplateEmail(userEmailList);
+mailTemplate.deleteTemplate(); // if you want to delete template
